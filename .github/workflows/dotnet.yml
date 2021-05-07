@@ -32,13 +32,3 @@ jobs:
     - name: Publish com o utilitario dotnet
       run: dotnet publish ${{ env.CAMINHO_PROJETO_WEBAPP }} -c Release -o app
 
-    - name: Login no Azure
-      uses: Azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - name: Deployment no Azure App Service
-      uses: Azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.NOME_WEBAPP_AZURE }}
-        package: './app'
